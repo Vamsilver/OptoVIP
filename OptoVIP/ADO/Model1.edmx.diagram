@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4d469ba3367f42c983cfd658ea38d290" Name="Diagram1">
+        <EntityTypeShape EntityType="OptoVIPModel.Authorization" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.Country" Width="1.5" PointX="3.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.Like" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.Manufacturer" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.Notation" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.PriceRange" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.Product" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.ProductCategory" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.Role" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.Supply" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.SupplyCategory" Width="1.5" PointX="3.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OptoVIPModel.User" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <AssociationConnector Association="OptoVIPModel.FK_User_Authorization" ManuallyRouted="false" />
+        <AssociationConnector Association="OptoVIPModel.FK_Supply_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="OptoVIPModel.FK_Like_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="OptoVIPModel.FK_Like_User" ManuallyRouted="false" />
+        <AssociationConnector Association="OptoVIPModel.FK_Product_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="OptoVIPModel.FK_Supply_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="OptoVIPModel.FK_Product_Notation" ManuallyRouted="false" />
+        <AssociationConnector Association="OptoVIPModel.FK_Product_PriceRange" ManuallyRouted="false" />
+        <AssociationConnector Association="OptoVIPModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="OptoVIPModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="OptoVIPModel.FK_Supply_SupplyCategory" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
