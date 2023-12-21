@@ -28,6 +28,9 @@ namespace OptoVIP.ADO
         public int idManufacturer { get; set; }
         public string description { get; set; }
         public int idPriceRange { get; set; }
+        public Nullable<decimal> approximatePricePerUnit { get; set; }
+        public byte[] image { get; set; }
+        public string link { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Like> Like { get; set; }

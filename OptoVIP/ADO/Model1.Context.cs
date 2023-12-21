@@ -13,10 +13,10 @@ namespace OptoVIP.ADO
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OptoVIPEntities : DbContext
+    public partial class OptoVIPEntities1 : DbContext
     {
-        public OptoVIPEntities()
-            : base("name=OptoVIPEntities")
+        public OptoVIPEntities1()
+            : base("name=OptoVIPEntities1")
         {
         }
     

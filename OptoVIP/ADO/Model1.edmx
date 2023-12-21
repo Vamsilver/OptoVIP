@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="idAuthorization" />
           </Key>
-          <Property Name="idAuthorization" Type="int" Nullable="false" />
+          <Property Name="idAuthorization" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -17,14 +17,14 @@
           <Key>
             <PropertyRef Name="idCountry" />
           </Key>
-          <Property Name="idCountry" Type="int" Nullable="false" />
+          <Property Name="idCountry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Like">
           <Key>
             <PropertyRef Name="idLike" />
           </Key>
-          <Property Name="idLike" Type="int" Nullable="false" />
+          <Property Name="idLike" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idUser" Type="int" Nullable="false" />
           <Property Name="idProduct" Type="int" Nullable="false" />
         </EntityType>
@@ -32,7 +32,7 @@
           <Key>
             <PropertyRef Name="idManufacturer" />
           </Key>
-          <Property Name="idManufacturer" Type="int" Nullable="false" />
+          <Property Name="idManufacturer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="500" />
         </EntityType>
@@ -40,21 +40,21 @@
           <Key>
             <PropertyRef Name="idNotation" />
           </Key>
-          <Property Name="idNotation" Type="int" Nullable="false" />
+          <Property Name="idNotation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PriceRange">
           <Key>
             <PropertyRef Name="idPriceRange" />
           </Key>
-          <Property Name="idPriceRange" Type="int" Nullable="false" />
+          <Property Name="idPriceRange" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="value" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="idProduct" />
           </Key>
-          <Property Name="idProduct" Type="int" Nullable="false" />
+          <Property Name="idProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="idProductCategory" Type="int" Nullable="false" />
           <Property Name="minCount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
@@ -62,26 +62,29 @@
           <Property Name="idManufacturer" Type="int" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="500" />
           <Property Name="idPriceRange" Type="int" Nullable="false" />
+          <Property Name="approximatePricePerUnit" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="image" Type="varbinary(max)" Nullable="false" />
+          <Property Name="link" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
             <PropertyRef Name="idProdcutCategory" />
           </Key>
-          <Property Name="idProdcutCategory" Type="int" Nullable="false" />
+          <Property Name="idProdcutCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="idRole" />
           </Key>
-          <Property Name="idRole" Type="int" Nullable="false" />
+          <Property Name="idRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Supply">
           <Key>
             <PropertyRef Name="idSupply" />
           </Key>
-          <Property Name="idSupply" Type="int" Nullable="false" />
+          <Property Name="idSupply" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idManufacturer" Type="int" Nullable="false" />
           <Property Name="idCountry" Type="int" Nullable="false" />
           <Property Name="idSupplyCategory" Type="int" Nullable="false" />
@@ -90,7 +93,7 @@
           <Key>
             <PropertyRef Name="idSupplyCategory" />
           </Key>
-          <Property Name="idSupplyCategory" Type="int" Nullable="false" />
+          <Property Name="idSupplyCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -107,7 +110,7 @@
           <Key>
             <PropertyRef Name="idUser" />
           </Key>
-          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idAuthorization" Type="int" Nullable="false" />
           <Property Name="idRole" Type="int" Nullable="false" />
         </EntityType>
@@ -195,15 +198,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Supply_Manufacturer">
+        <Association Name="FK_Supply_Manufacturer1">
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
-          <End Role="Supply" Type="Self.Supply" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Manufacturer">
               <PropertyRef Name="idManufacturer" />
             </Principal>
             <Dependent Role="Supply">
-              <PropertyRef Name="idSupply" />
+              <PropertyRef Name="idManufacturer" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -285,7 +288,7 @@
             <End Role="Country" EntitySet="Country" />
             <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
-          <AssociationSet Name="FK_Supply_Manufacturer" Association="Self.FK_Supply_Manufacturer">
+          <AssociationSet Name="FK_Supply_Manufacturer1" Association="Self.FK_Supply_Manufacturer1">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
@@ -311,7 +314,7 @@
           <Key>
             <PropertyRef Name="idAuthorization" />
           </Key>
-          <Property Name="idAuthorization" Type="Int32" Nullable="false" />
+          <Property Name="idAuthorization" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_Authorization" FromRole="Authorization" ToRole="User" />
@@ -320,7 +323,7 @@
           <Key>
             <PropertyRef Name="idCountry" />
           </Key>
-          <Property Name="idCountry" Type="Int32" Nullable="false" />
+          <Property Name="idCountry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Country" FromRole="Country" ToRole="Supply" />
         </EntityType>
@@ -328,7 +331,7 @@
           <Key>
             <PropertyRef Name="idLike" />
           </Key>
-          <Property Name="idLike" Type="Int32" Nullable="false" />
+          <Property Name="idLike" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idUser" Type="Int32" Nullable="false" />
           <Property Name="idProduct" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Like_Product" FromRole="Like" ToRole="Product" />
@@ -338,17 +341,17 @@
           <Key>
             <PropertyRef Name="idManufacturer" />
           </Key>
-          <Property Name="idManufacturer" Type="Int32" Nullable="false" />
+          <Property Name="idManufacturer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Manufacturer" FromRole="Manufacturer" ToRole="Product" />
-          <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Manufacturer" FromRole="Manufacturer" ToRole="Supply" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Manufacturer1" FromRole="Manufacturer" ToRole="Supply" />
         </EntityType>
         <EntityType Name="Notation">
           <Key>
             <PropertyRef Name="idNotation" />
           </Key>
-          <Property Name="idNotation" Type="Int32" Nullable="false" />
+          <Property Name="idNotation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Notation" FromRole="Notation" ToRole="Product" />
         </EntityType>
@@ -356,7 +359,7 @@
           <Key>
             <PropertyRef Name="idPriceRange" />
           </Key>
-          <Property Name="idPriceRange" Type="Int32" Nullable="false" />
+          <Property Name="idPriceRange" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="value" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_PriceRange" FromRole="PriceRange" ToRole="Product" />
         </EntityType>
@@ -364,7 +367,7 @@
           <Key>
             <PropertyRef Name="idProduct" />
           </Key>
-          <Property Name="idProduct" Type="Int32" Nullable="false" />
+          <Property Name="idProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="idProductCategory" Type="Int32" Nullable="false" />
           <Property Name="minCount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
@@ -372,6 +375,9 @@
           <Property Name="idManufacturer" Type="Int32" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="idPriceRange" Type="Int32" Nullable="false" />
+          <Property Name="approximatePricePerUnit" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Like" Relationship="Self.FK_Like_Product" FromRole="Product" ToRole="Like" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
           <NavigationProperty Name="Notation" Relationship="Self.FK_Product_Notation" FromRole="Product" ToRole="Notation" />
@@ -382,7 +388,7 @@
           <Key>
             <PropertyRef Name="idProdcutCategory" />
           </Key>
-          <Property Name="idProdcutCategory" Type="Int32" Nullable="false" />
+          <Property Name="idProdcutCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
         </EntityType>
@@ -390,7 +396,7 @@
           <Key>
             <PropertyRef Name="idRole" />
           </Key>
-          <Property Name="idRole" Type="Int32" Nullable="false" />
+          <Property Name="idRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
@@ -398,19 +404,19 @@
           <Key>
             <PropertyRef Name="idSupply" />
           </Key>
-          <Property Name="idSupply" Type="Int32" Nullable="false" />
+          <Property Name="idSupply" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idManufacturer" Type="Int32" Nullable="false" />
           <Property Name="idCountry" Type="Int32" Nullable="false" />
           <Property Name="idSupplyCategory" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Supply_Country" FromRole="Supply" ToRole="Country" />
-          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Supply_Manufacturer" FromRole="Supply" ToRole="Manufacturer" />
+          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Supply_Manufacturer1" FromRole="Supply" ToRole="Manufacturer" />
           <NavigationProperty Name="SupplyCategory" Relationship="Self.FK_Supply_SupplyCategory" FromRole="Supply" ToRole="SupplyCategory" />
         </EntityType>
         <EntityType Name="SupplyCategory">
           <Key>
             <PropertyRef Name="idSupplyCategory" />
           </Key>
-          <Property Name="idSupplyCategory" Type="Int32" Nullable="false" />
+          <Property Name="idSupplyCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_SupplyCategory" FromRole="SupplyCategory" ToRole="Supply" />
         </EntityType>
@@ -428,7 +434,7 @@
           <Key>
             <PropertyRef Name="idUser" />
           </Key>
-          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idAuthorization" Type="Int32" Nullable="false" />
           <Property Name="idRole" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Authorization" Relationship="Self.FK_User_Authorization" FromRole="User" ToRole="Authorization" />
@@ -495,15 +501,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Supply_Manufacturer">
+        <Association Name="FK_Supply_Manufacturer1">
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
-          <End Role="Supply" Type="Self.Supply" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Manufacturer">
               <PropertyRef Name="idManufacturer" />
             </Principal>
             <Dependent Role="Supply">
-              <PropertyRef Name="idSupply" />
+              <PropertyRef Name="idManufacturer" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -567,7 +573,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OptoVIPEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OptoVIPEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Authorization" EntityType="Self.Authorization" />
           <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="Like" EntityType="Self.Like" />
@@ -601,7 +607,7 @@
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_Supply_Manufacturer" Association="Self.FK_Supply_Manufacturer">
+          <AssociationSet Name="FK_Supply_Manufacturer1" Association="Self.FK_Supply_Manufacturer1">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
@@ -631,7 +637,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OptoVIPModelStoreContainer" CdmEntityContainer="OptoVIPEntities">
+        <EntityContainerMapping StorageEntityContainer="OptoVIPModelStoreContainer" CdmEntityContainer="OptoVIPEntities1">
           <EntitySetMapping Name="Authorization">
             <EntityTypeMapping TypeName="OptoVIPModel.Authorization">
               <MappingFragment StoreEntitySet="Authorization">
@@ -694,6 +700,9 @@
                 <ScalarProperty Name="idManufacturer" ColumnName="idManufacturer" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="idPriceRange" ColumnName="idPriceRange" />
+                <ScalarProperty Name="approximatePricePerUnit" ColumnName="approximatePricePerUnit" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="link" ColumnName="link" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

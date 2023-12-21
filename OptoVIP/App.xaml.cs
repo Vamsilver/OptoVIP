@@ -14,7 +14,8 @@ namespace OptoVIP
     /// </summary>
     public partial class App : Application
     {
-        public static OptoVIPEntities Connection = new OptoVIPEntities();
+        public static OptoVIPEntities1 Connection = new OptoVIPEntities1();
         public static ADO.User CurrentUser = new ADO.User();
+        public static string UserLogin;
     }
 }

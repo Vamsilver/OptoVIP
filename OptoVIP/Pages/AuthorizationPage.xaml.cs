@@ -24,5 +24,29 @@ namespace OptoVIP.Pages
         {
             InitializeComponent();
         }
+
+        private void InviteHyperlinkClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new InvitePage());
+        }
+
+        private void AuthorizationButtonClick(object sender, RoutedEventArgs e)
+        {
+            string login = LoginTextBox.Text;
+            string password = PasswordTextBox.Password;
+
+            var authorization = App.Connection.Authorization.Where(z => z.login.Equals(login) && z.password.Equals(password)).FirstOrDefault();
+            if (authorization != null)
+            {
+                App.CurrentUser = authorization.User.FirstOrDefault();
+                App.UserLogin = authorization.login;
+
+                NavigationService.Navigate(new Pages.MainPage());
+            }
+            else
+            {
+                MessageBox.Show("Неправильные данные");
+            }
+        }
     }
 }

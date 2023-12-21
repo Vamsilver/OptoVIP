@@ -13,17 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace OptoVIP
+namespace OptoVIP.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for InvitePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class InvitePage : Page
     {
-        public MainWindow()
+        public InvitePage()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.AuthorizationPage());
+        }
+
+        private void ReturnButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

@@ -18,6 +18,7 @@ namespace OptoVIP.ADO
         public Manufacturer()
         {
             this.Product = new HashSet<Product>();
+            this.Supply = new HashSet<Supply>();
         }
     
         public int idManufacturer { get; set; }
@@ -26,6 +27,7 @@ namespace OptoVIP.ADO
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }
-        public virtual Supply Supply { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supply> Supply { get; set; }
     }
 }
