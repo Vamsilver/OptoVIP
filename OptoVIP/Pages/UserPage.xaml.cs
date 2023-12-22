@@ -261,5 +261,13 @@ namespace OptoVIP.Pages
         {
             NavigationService.Navigate(new AddNewClientPage());
         }
+
+        private void ProductListSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ProductList.SelectedItem == null)
+                return;
+
+            NavigationService.Navigate(new EditOrViewProductPage(ProductList.SelectedItem as ViewProduct));
+        }
     }
 }

@@ -79,7 +79,7 @@
 
         </UniformGrid>
 
-        <ListView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" x:Name="ProductList" IsEnabled="False" Visibility="Hidden" BorderBrush="#FEF9EF" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=30}" Grid.RowSpan="1">
+        <ListView Grid.Row="4" Grid.Column="1" SelectionChanged="ProductListSelectionChanged" Grid.ColumnSpan="5" x:Name="ProductList" IsEnabled="False" Visibility="Hidden" BorderBrush="#FEF9EF" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=30}" Grid.RowSpan="1">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="5"></UniformGrid>

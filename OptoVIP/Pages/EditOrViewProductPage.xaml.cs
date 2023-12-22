@@ -3,6 +3,7 @@ using OptoVIP.ADO;
 using OptoVIP.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -47,7 +48,7 @@ namespace OptoVIP.Pages
             this.product = App.Connection.Product.Where(z => z.idProduct.Equals(productFromProductList.idProduct)).FirstOrDefault();
 
             if(productFromProductList.GetIsLikedProductFromCurrentUser)
-                HeartImage.Source = new BitmapImage(new Uri("Images/free-icon-heart-2107845.png", UriKind.Relative));
+                HeartImage.Source = new BitmapImage(new Uri("/Images/free-icon-heart-2107845.png", UriKind.Relative));
 
             DataContext = product;
 
@@ -153,7 +154,7 @@ namespace OptoVIP.Pages
                 return;
             }
 
-            App.Connection.Product.Add(product);
+            App.Connection.Product.AddOrUpdate(product);
             App.Connection.SaveChanges();
 
             NavigationService.GoBack();
@@ -227,7 +228,7 @@ namespace OptoVIP.Pages
                     App.Connection.Like.Remove(oldLike);
                     App.Connection.SaveChanges();
 
-                    HeartImage.Source = new BitmapImage(new Uri("Images/free-icon-heart-3502230.png", UriKind.Relative));
+                    HeartImage.Source = new BitmapImage(new Uri("/Images/free-icon-heart-3502230.png", UriKind.Relative));
 
                     NavigationService.Navigate(new EditOrViewProductPage(new ViewProduct(product)));
 
@@ -241,7 +242,7 @@ namespace OptoVIP.Pages
                 App.Connection.Like.Add(newLike);
                 App.Connection.SaveChanges();
 
-                HeartImage.Source = new BitmapImage(new Uri("Images/free-icon-heart-2107845.png", UriKind.Relative));
+                HeartImage.Source = new BitmapImage(new Uri("/Images/free-icon-heart-2107845.png", UriKind.Relative));
 
                 NavigationService.Navigate(new EditOrViewProductPage(new ViewProduct(product)));
 

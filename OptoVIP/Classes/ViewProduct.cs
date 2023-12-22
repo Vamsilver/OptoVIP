@@ -33,7 +33,7 @@ namespace OptoVIP.Classes
 
             AmountOfLikes = App.Connection.Like.Where(z => z.idProduct.Equals(product.idProduct)).Count();
 
-            if(App.Connection.Like.Where(z => z.idUser.Equals(App.CurrentUser.idUser)).FirstOrDefault() != null)
+            if(App.Connection.Like.Where(z => z.idUser.Equals(App.CurrentUser.idUser) && z.idProduct.Equals(idProduct)).FirstOrDefault() != null)
             {
                 isLikedProductFromCurrentUser = true;
             }
