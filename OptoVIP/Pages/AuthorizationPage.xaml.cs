@@ -35,6 +35,12 @@ namespace OptoVIP.Pages
             string login = LoginTextBox.Text;
             string password = PasswordTextBox.Password;
 
+            if(String.IsNullOrEmpty(login) || String.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Заполните поля");
+                return;
+            }
+
             var authorization = App.Connection.Authorization.Where(z => z.login.Equals(login) && z.password.Equals(password)).FirstOrDefault();
             if (authorization != null)
             {

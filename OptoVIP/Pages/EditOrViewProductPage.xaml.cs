@@ -88,6 +88,11 @@ namespace OptoVIP.Pages
                 DeleteButton.IsEnabled = false;
                 DeleteButton.Visibility = Visibility.Hidden;
             }
+            else
+            {
+                LikeButton.IsEnabled = false;
+                LikeButton.Visibility = Visibility.Hidden;
+            }
         }
 
         private void SelectImage()

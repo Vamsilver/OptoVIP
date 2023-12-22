@@ -83,6 +83,13 @@ namespace OptoVIP.Pages
                 return;
             }
 
+
+            if (String.IsNullOrEmpty(LinkTextBox.Text))
+            {
+                MessageBox.Show("Ссылка должна быть заполнена!", "Заполните поле");
+                return;
+            }
+
             try
             {
                 product.title = TitleTextBox.Text;

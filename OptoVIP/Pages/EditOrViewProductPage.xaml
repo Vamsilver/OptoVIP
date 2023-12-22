@@ -84,8 +84,9 @@
 
         <Button x:Name="EditImageButton" Margin="0,10,0,0" Click="EditImageButtonClick" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" FontSize="22" Width="130" HorizontalAlignment="Right" Height="35">Изменить</Button>
 
-        <Button Click="LikeButtonClick" Grid.Column="3" Grid.Row="2" VerticalAlignment="Bottom" FontSize="22" Width="130"
-                HorizontalAlignment="Right" Margin="0,0,0,80" BorderThickness="0" Background="Transparent">
+        <Button Click="LikeButtonClick" Grid.Column="3" Grid.Row="2" VerticalAlignment="Bottom" 
+                FontSize="22" Width="130" HorizontalAlignment="Right" Margin="0,0,0,80" 
+                BorderThickness="0" Background="Transparent" x:Name="LikeButton">
             <Image x:Name="HeartImage" Source="/Images/free-icon-heart-3502230.png"></Image>
         </Button>
         

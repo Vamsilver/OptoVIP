@@ -219,7 +219,10 @@ namespace OptoVIP.Pages
 
         private void LogoButtonClick(object sender, RoutedEventArgs e)
         {
-
+            if(MessageBox.Show("Вы точно хотите выйти?","Выход из аккунта", MessageBoxButton.OKCancel).Equals(MessageBoxResult.OK))
+            {
+                NavigationService.Navigate(new AuthorizationPage());
+            }
         }
 
         private void SearchTextBoxTextChanged(object sender, TextChangedEventArgs e)
