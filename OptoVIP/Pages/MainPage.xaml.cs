@@ -243,7 +243,7 @@ namespace OptoVIP.Pages
             }
         }
 
-        private void MinCost_TextChanged(object sender, TextChangedEventArgs e)
+        private void MinCostTextChanged(object sender, TextChangedEventArgs e)
         {
             var newList = OrderProductList(products);
 
@@ -254,7 +254,7 @@ namespace OptoVIP.Pages
             ProductList.Items.Refresh();
         }
 
-        private void MaxCost_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void MaxCostPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!(Char.IsDigit(e.Text, 0) || (e.Text == ".")
                && (!MaxCost.Text.Contains(".")
@@ -264,7 +264,7 @@ namespace OptoVIP.Pages
             }
         }
 
-        private void MaxCost_TextChanged(object sender, TextChangedEventArgs e)
+        private void MaxCostTextChanged(object sender, TextChangedEventArgs e)
         {
             var newList = OrderProductList(products);
 
@@ -273,6 +273,14 @@ namespace OptoVIP.Pages
 
             ProductList.ItemsSource = products;
             ProductList.Items.Refresh();
+        }
+
+        private void ProductListSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ProductList.SelectedItem == null)
+                return;
+
+            NavigationService.Navigate(new EditOrViewProductPage(ProductList.SelectedItem as ViewProduct));
         }
     }
 }

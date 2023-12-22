@@ -12,6 +12,9 @@ namespace OptoVIP.Classes
     {
         int AmountOfLikes = 0;
 
+        bool isLikedProductFromCurrentUser = false;
+
+        public bool GetIsLikedProductFromCurrentUser => isLikedProductFromCurrentUser;
         public int GetAmountOfLikes => AmountOfLikes;
 
         public ViewProduct(Product product)
@@ -29,6 +32,16 @@ namespace OptoVIP.Classes
             approximatePricePerUnit = product.approximatePricePerUnit;
 
             AmountOfLikes = App.Connection.Like.Where(z => z.idProduct.Equals(product.idProduct)).Count();
+
+            if(App.Connection.Like.Where(z => z.idUser.Equals(App.CurrentUser.idUser)).FirstOrDefault() != null)
+            {
+                isLikedProductFromCurrentUser = true;
+            }
+        }
+
+        public override string ToString()
+        {
+            return title;
         }
     }
 }

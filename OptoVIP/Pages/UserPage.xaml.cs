@@ -237,10 +237,29 @@ namespace OptoVIP.Pages
             NavigationService.Navigate(new MainPage());
         }
 
-        private void AddManufacturerButtonClick(object sender, RoutedEventArgs e)
+        private void ManufacturersButtonClick(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new ManufacturersPage());
         }
 
+        private void CoutriesButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CountriesPage());
+        }
+
+        private void NotationsButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new NotationsPage());
+        }
+
+        private void CategoresButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CategoriesPage());
+        }
+
+        private void AddNewClientButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddNewClientPage());
+        }
     }
 }

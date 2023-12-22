@@ -76,6 +76,13 @@ namespace OptoVIP.Pages
                 return;
             }
 
+
+            if (String.IsNullOrEmpty(TitleTextBox.Text))
+            {
+                MessageBox.Show("Название должно быть заполнено!", "Заполните поле");
+                return;
+            }
+
             try
             {
                 product.title = TitleTextBox.Text;

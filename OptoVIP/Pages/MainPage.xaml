@@ -66,7 +66,7 @@
 
             <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
                 <TextBlock FontSize="26" Margin="0,0,10,0" VerticalAlignment="Center"> Цена от</TextBlock>
-                <TextBox x:Name="MinCost" Width="75" FontSize="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="MinCostPreviewTextInput" TextChanged="MinCost_TextChanged">
+                <TextBox x:Name="MinCost" Width="75" FontSize="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="MinCostPreviewTextInput" TextChanged="MinCostTextChanged">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
@@ -74,7 +74,7 @@
                     </TextBox.Resources>
                 </TextBox>
                 <TextBlock FontSize="26" Margin="10,0,10,0" VerticalAlignment="Center"> до</TextBlock>
-                <TextBox x:Name="MaxCost" Width="75" FontSize="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="MaxCost_PreviewTextInput" TextChanged="MaxCost_TextChanged">
+                <TextBox x:Name="MaxCost" Width="75" FontSize="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="MaxCostPreviewTextInput" TextChanged="MaxCostTextChanged">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
@@ -85,7 +85,7 @@
 
         </UniformGrid>
 
-        <ListView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" x:Name="ProductList" BorderBrush="#FEF9EF" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=30}" Grid.RowSpan="1">
+        <ListView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" x:Name="ProductList" BorderBrush="#FEF9EF" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=30}" Grid.RowSpan="1" SelectionChanged="ProductListSelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="5"></UniformGrid>

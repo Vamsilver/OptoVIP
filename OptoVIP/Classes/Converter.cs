@@ -29,6 +29,23 @@ namespace OptoVIP.Classes
             return product;
         }
 
+        public static Manufacturer ConvertToManufacturer(ViewManufacturer viewManufacturer)
+        {
+            Manufacturer manufacturer = new Manufacturer()
+            {
+                idManufacturer = viewManufacturer.idManufacturer,
+                title = viewManufacturer.title,
+                description = viewManufacturer.description,
+            };
+
+            return manufacturer;
+        }
+
+        public static ViewManufacturer ConvertToViewManufacturer(Manufacturer manufacturer)
+        {
+            return new ViewManufacturer(manufacturer);
+        }
+
         public static List<ViewProduct> ConvertToListViewProducts(List<Product> list)
         {
             List<ViewProduct> viewProductList = new List<ViewProduct>();
@@ -37,6 +54,16 @@ namespace OptoVIP.Classes
                 viewProductList.Add(new ViewProduct(product));
 
             return viewProductList;
+        }
+
+        public static List<ViewManufacturer> ConvertToListViewManufacturers(List<Manufacturer> list)
+        {
+            List<ViewManufacturer> viewManufacturers = new List<ViewManufacturer>();
+
+            foreach (Manufacturer manufacturer in list)
+                viewManufacturers.Add(new ViewManufacturer(manufacturer));
+
+            return viewManufacturers;
         }
     }
 }
