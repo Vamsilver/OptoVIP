@@ -122,7 +122,7 @@ namespace OptoVIP.Pages
                 return;
             }
 
-            if (App.Connection.Manufacturer.Where(z => z.title.Equals(manufacturer.title)).FirstOrDefault() != null)
+            if (!EndOperationsButton.Content.Equals("Изменить") && App.Connection.Manufacturer.Where(z => z.title.Equals(manufacturer.title)).FirstOrDefault() != null)
             {
                 MessageBox.Show("Такой производитель уже сущесвует!");
                 return;
